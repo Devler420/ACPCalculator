@@ -87,6 +87,15 @@ public class LoginFrame extends JFrame
 		contentPane.add(lblNewLabel);
 		
 		textField_username = new JTextField();
+		textField_username.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if (e.getKeyCode() == KeyEvent.VK_ENTER)
+				{
+					login();
+				}
+			}
+		});
 		textField_username.setColumns(10);
 		textField_username.setBounds(177, 68, 214, 36);
 		contentPane.add(textField_username);

@@ -15,6 +15,7 @@ import M.UserDB;
 import M.UserManager;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JButton;
@@ -95,12 +96,14 @@ public class MainResultFrame extends JFrame
 		
 		table = new JTable();
 		table.addMouseListener(new MouseAdapter() {
+			
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (table.getSelectedRowCount() < 1)
 				{
 					return;
 				}
+				
 				int tableindex = table.getSelectedRow();
 				
 				int mybilling_id = Integer.parseInt(table.getValueAt(tableindex, 0).toString());
@@ -121,6 +124,7 @@ public class MainResultFrame extends JFrame
 				
 				ResultFrame f = new ResultFrame();
 				f.setVisible(true);
+				
 			}
 		});
 		table.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
@@ -143,7 +147,18 @@ public class MainResultFrame extends JFrame
 		btnEditCal.setBounds(861, 187, 128, 40);
 		contentPane.add(btnEditCal);
 		
-		JButton btnDeleteCal = new JButton("DELETE");
+		JButton btnDeleteCal = new JButton("DELETE"); //DELTE
+		btnDeleteCal.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (!GlobalData.CurrentUser_nickname.equals("Boom"))
+				{
+					JOptionPane.showMessageDialog(MainResultFrame.this, "Permission Denied");
+					return;
+				}
+				
+				CalculatorManager.deleteBill();
+			}
+		});
 		btnDeleteCal.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnDeleteCal.setBounds(861, 267, 128, 40);
 		contentPane.add(btnDeleteCal);

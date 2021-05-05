@@ -375,4 +375,50 @@ public class CalculatorManager
 	      System.err.println(e.getMessage());
 	    }
 	}
+	
+	public static void deleteBill()
+	{
+		try
+	    {
+	      String myDriver = "com.mysql.cj.jdbc.Driver";
+	      String myUrl = "jdbc:mysql://"+GlobalData.DATABASE_LOCATION+":"+GlobalData.DATABASE_PORT+"/"+GlobalData.DATABASE_DATABASE_NAME;
+	      Class.forName(myDriver);
+	      Connection conn = DriverManager.getConnection(myUrl, GlobalData.DATABASE_USERNAME, GlobalData.DATABASE_PASSWORD);
+	      
+	      String query = "DELETE FROM billing_details_main WHERE billing_id = '"+GlobalData.CurrentResult_billing_id+"'";
+	      Statement st = conn.createStatement();
+	      st.executeUpdate(query);
+	      
+	      query = "DELETE FROM billing_details_result WHERE billing_id = '"+GlobalData.CurrentResult_billing_id+"'";
+	      st = conn.createStatement();
+	      st.executeUpdate(query);
+	      
+	      query = "DELETE FROM billing_details_drinker WHERE billing_id = '"+GlobalData.CurrentResult_billing_id+"'";
+	      st = conn.createStatement();
+	      st.executeUpdate(query);
+	      
+	      query = "DELETE FROM billing_details_item1 WHERE billing_id = '"+GlobalData.CurrentResult_billing_id+"'";
+	      st = conn.createStatement();
+	      st.executeUpdate(query);
+	      
+	      query = "DELETE FROM billing_details_item2 WHERE billing_id = '"+GlobalData.CurrentResult_billing_id+"'";
+	      st = conn.createStatement();
+	      st.executeUpdate(query);
+	      
+	      query = "DELETE FROM billing_details_ice WHERE billing_id = '"+GlobalData.CurrentResult_billing_id+"'";
+	      st = conn.createStatement();
+	      st.executeUpdate(query);
+	      
+	      query = "DELETE FROM billing_details_etc WHERE billing_id = '"+GlobalData.CurrentResult_billing_id+"'";
+	      st = conn.createStatement();
+	      st.executeUpdate(query);
+	      
+	      st.close();
+	    }
+	    catch (Exception e)
+	    {
+	      System.err.println("Got an exception! ");
+	      System.err.println(e.getMessage());
+	    }
+	}
 }

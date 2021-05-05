@@ -31,6 +31,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JComboBox;
+import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -49,6 +50,13 @@ import com.toedter.calendar.JCalendar;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.Color;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import javax.swing.JProgressBar;
 
 public class CalculatorFrame extends JFrame
 {
@@ -70,6 +78,7 @@ public class CalculatorFrame extends JFrame
 	private JComboBox comboBox_drinker8;
 	ArrayList<UserDB> list_user;
 	ArrayList<String> list_nickname;
+	ArrayList<String> list_nickname_drinker;
 	private JRadioButton rdbtnByPOT;
 	private JRadioButton rdbtnByCUP;
 	private String cuptype;
@@ -136,7 +145,9 @@ public class CalculatorFrame extends JFrame
 	public CalculatorFrame()
 	{
 		setTitle("Calculate");
+		//Load nickname for CBO
 		loadnickname();
+		loadnicknameDrinker();
 		
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(100, 100, 804, 485);
@@ -191,30 +202,37 @@ public class CalculatorFrame extends JFrame
 		panel_bycup.add(comboBox_cup1);
 		
 		comboBox_cup2 = new JComboBox(numberofcup);
+		comboBox_cup2.setEnabled(false);
 		comboBox_cup2.setBounds(10, 66, 58, 25);
 		panel_bycup.add(comboBox_cup2);
 		
 		comboBox_cup3 = new JComboBox(numberofcup);
+		comboBox_cup3.setEnabled(false);
 		comboBox_cup3.setBounds(10, 97, 58, 25);
 		panel_bycup.add(comboBox_cup3);
 		
 		comboBox_cup4 = new JComboBox(numberofcup);
+		comboBox_cup4.setEnabled(false);
 		comboBox_cup4.setBounds(10, 128, 58, 25);
 		panel_bycup.add(comboBox_cup4);
 		
 		comboBox_cup5 = new JComboBox(numberofcup);
+		comboBox_cup5.setEnabled(false);
 		comboBox_cup5.setBounds(10, 159, 58, 25);
 		panel_bycup.add(comboBox_cup5);
 		
 		comboBox_cup6 = new JComboBox(numberofcup);
+		comboBox_cup6.setEnabled(false);
 		comboBox_cup6.setBounds(10, 190, 58, 25);
 		panel_bycup.add(comboBox_cup6);
 		
 		comboBox_cup7 = new JComboBox(numberofcup);
+		comboBox_cup7.setEnabled(false);
 		comboBox_cup7.setBounds(10, 222, 58, 25);
 		panel_bycup.add(comboBox_cup7);
 		
 		comboBox_cup8 = new JComboBox(numberofcup);
+		comboBox_cup8.setEnabled(false);
 		comboBox_cup8.setBounds(10, 254, 58, 25);
 		panel_bycup.add(comboBox_cup8);
 		
@@ -371,35 +389,127 @@ public class CalculatorFrame extends JFrame
 		lblNewLabel_6.setBounds(358, 23, 115, 13);
 		panel_bypot.add(lblNewLabel_6);
 		
-		comboBox_drinker1 = new JComboBox(list_nickname.toArray(new String[0]));
+		comboBox_drinker1 = new JComboBox(list_nickname_drinker.toArray(new String[0]));
+		comboBox_drinker1.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				if(e.getStateChange() == e.SELECTED)
+				{
+					comboBox_drinker1.getSelectedIndex();
+					list_nickname_drinker.remove(comboBox_drinker1.getSelectedIndex());
+					comboBox_drinker2.setEnabled(true);
+					comboBox_drinker2.setModel(new DefaultComboBoxModel<>(list_nickname_drinker.toArray()));
+					comboBox_cup2.setEnabled(true);
+				}
+			}
+		});
+		
 		comboBox_drinker1.setBounds(358, 46, 115, 25);
 		panel_bypot.add(comboBox_drinker1);
 		
-		comboBox_drinker2 = new JComboBox(list_nickname.toArray(new String[0]));
+		comboBox_drinker2 = new JComboBox();
+		comboBox_drinker2.setEnabled(false);
+		comboBox_drinker2.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				if(e.getStateChange() == e.SELECTED)
+				{
+					comboBox_drinker2.getSelectedIndex();
+					list_nickname_drinker.remove(comboBox_drinker2.getSelectedIndex());
+					comboBox_drinker3.setEnabled(true);
+					comboBox_drinker3.setModel(new DefaultComboBoxModel<>(list_nickname_drinker.toArray()));
+					comboBox_cup3.setEnabled(true);
+				}
+			}
+		});
 		comboBox_drinker2.setBounds(358, 77, 114, 25);
 		panel_bypot.add(comboBox_drinker2);
 		
-		comboBox_drinker3 = new JComboBox(list_nickname.toArray(new String[0]));
+		comboBox_drinker3 = new JComboBox();
+		comboBox_drinker3.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				if(e.getStateChange() == e.SELECTED)
+				{
+					comboBox_drinker3.getSelectedIndex();
+					list_nickname_drinker.remove(comboBox_drinker3.getSelectedIndex());
+					comboBox_drinker4.setEnabled(true);
+					comboBox_drinker4.setModel(new DefaultComboBoxModel<>(list_nickname_drinker.toArray()));
+					comboBox_cup4.setEnabled(true);
+				}
+			}
+		});
+		comboBox_drinker3.setEnabled(false);
 		comboBox_drinker3.setBounds(358, 108, 114, 25);
 		panel_bypot.add(comboBox_drinker3);
 		
-		comboBox_drinker4 = new JComboBox(list_nickname.toArray(new String[0]));
+		comboBox_drinker4 = new JComboBox();
+		comboBox_drinker4.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				if(e.getStateChange() == e.SELECTED)
+				{
+					comboBox_drinker4.getSelectedIndex();
+					list_nickname_drinker.remove(comboBox_drinker4.getSelectedIndex());
+					comboBox_drinker5.setEnabled(true);
+					comboBox_drinker5.setModel(new DefaultComboBoxModel<>(list_nickname_drinker.toArray()));
+					comboBox_cup5.setEnabled(true);
+				}
+			}
+		});
+		comboBox_drinker4.setEnabled(false);
 		comboBox_drinker4.setBounds(358, 139, 114, 25);
 		panel_bypot.add(comboBox_drinker4);
 		
-		comboBox_drinker5 = new JComboBox(list_nickname.toArray(new String[0]));
+		comboBox_drinker5 = new JComboBox();
+		comboBox_drinker5.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				if(e.getStateChange() == e.SELECTED)
+				{
+					comboBox_drinker5.getSelectedIndex();
+					list_nickname_drinker.remove(comboBox_drinker5.getSelectedIndex());
+					comboBox_drinker6.setEnabled(true);
+					comboBox_drinker6.setModel(new DefaultComboBoxModel<>(list_nickname_drinker.toArray()));
+					comboBox_cup6.setEnabled(true);
+				}
+			}
+		});
+		comboBox_drinker5.setEnabled(false);
 		comboBox_drinker5.setBounds(358, 170, 114, 25);
 		panel_bypot.add(comboBox_drinker5);
 		
-		comboBox_drinker6 = new JComboBox(list_nickname.toArray(new String[0]));
+		comboBox_drinker6 = new JComboBox();
+		comboBox_drinker6.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				if(e.getStateChange() == e.SELECTED)
+				{
+					comboBox_drinker6.getSelectedIndex();
+					list_nickname_drinker.remove(comboBox_drinker6.getSelectedIndex());
+					comboBox_drinker7.setEnabled(true);
+					comboBox_drinker7.setModel(new DefaultComboBoxModel<>(list_nickname_drinker.toArray()));
+					comboBox_cup7.setEnabled(true);
+				}
+			}
+		});
+		comboBox_drinker6.setEnabled(false);
 		comboBox_drinker6.setBounds(358, 201, 114, 25);
 		panel_bypot.add(comboBox_drinker6);
 		
-		comboBox_drinker7 = new JComboBox(list_nickname.toArray(new String[0]));
+		comboBox_drinker7 = new JComboBox();
+		comboBox_drinker7.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				if(e.getStateChange() == e.SELECTED)
+				{
+					comboBox_drinker7.getSelectedIndex();
+					list_nickname_drinker.remove(comboBox_drinker7.getSelectedIndex());
+					comboBox_drinker8.setEnabled(true);
+					comboBox_drinker8.setModel(new DefaultComboBoxModel<>(list_nickname_drinker.toArray()));
+					comboBox_cup8.setEnabled(true);
+				}
+			}
+		});
+		comboBox_drinker7.setEnabled(false);
 		comboBox_drinker7.setBounds(358, 233, 114, 25);
 		panel_bypot.add(comboBox_drinker7);
 		
-		comboBox_drinker8 = new JComboBox(list_nickname.toArray(new String[0]));
+		comboBox_drinker8 = new JComboBox();
+		comboBox_drinker8.setEnabled(false);
 		comboBox_drinker8.setBounds(358, 265, 114, 25);
 		panel_bypot.add(comboBox_drinker8);
 		
@@ -557,11 +667,41 @@ public class CalculatorFrame extends JFrame
 				
 				Date myDate = (dateChooser.getDate());
 				sqlDate = new java.sql.Date(myDate.getTime());
-
-				totalcup = ((double)comboBox_cup1.getSelectedItem())+((double)comboBox_cup2.getSelectedItem())+((double)comboBox_cup3.getSelectedItem())+((double)comboBox_cup4.getSelectedItem())
-						+((double)comboBox_cup5.getSelectedItem())+((double)comboBox_cup6.getSelectedItem())+((double)comboBox_cup7.getSelectedItem())+((double)comboBox_cup8.getSelectedItem());
 				
-				if ((String)comboBox_item1.getSelectedItem() != "")
+				totalcup = ((double) comboBox_cup1.getSelectedItem());
+				
+				if (comboBox_cup2.isEnabled() == true)
+				{
+					totalcup += (double) comboBox_cup2.getSelectedItem();
+				}
+				if (comboBox_cup3.isEnabled() == true)
+				{
+					totalcup += (double) comboBox_cup3.getSelectedItem();
+				}
+				if (comboBox_cup4.isEnabled() == true)
+				{
+					totalcup += (double) comboBox_cup4.getSelectedItem();
+				}
+				if (comboBox_cup5.isEnabled() == true)
+				{
+					totalcup += (double) comboBox_cup5.getSelectedItem();
+				}
+				if (comboBox_cup6.isEnabled() == true)
+				{
+					totalcup += (double) comboBox_cup6.getSelectedItem();
+				}
+				if (comboBox_cup7.isEnabled() == true)
+				{
+					totalcup += (double) comboBox_cup7.getSelectedItem();
+				}
+				if (comboBox_cup8.isEnabled() == true)
+				{
+					totalcup += (double) comboBox_cup8.getSelectedItem();
+				}
+				
+//CHECK BUGS
+				
+				if (!comboBox_item1.getSelectedItem().toString().equals("") || !textField_price1.getText().toString().equals("") || !comboBox_sup1.getSelectedItem().toString().equals(""))
 				{
 					if (!textField_price1.getText().trim().matches("[-+]?\\d*\\.?\\d+"))
 					{
@@ -570,9 +710,21 @@ public class CalculatorFrame extends JFrame
 						textField_price1.selectAll();
 						return;
 					}
+					if (comboBox_sup1.getSelectedItem().toString().equals(""))
+					{
+						JOptionPane.showMessageDialog(CalculatorFrame.this, "Please select Supplier");
+						comboBox_sup1.requestFocus();
+						return;
+					}
+					if(comboBox_item1.getSelectedItem().toString().equals(""))
+					{
+						JOptionPane.showMessageDialog(CalculatorFrame.this, "Please select Item");
+						comboBox_item1.requestFocus();
+						return;
+					}
 				}
 				
-				if ((String)comboBox_item2.getSelectedItem() != "")
+				if (!comboBox_item2.getSelectedItem().toString().equals("") || !textField_price2.getText().toString().equals("")|| !comboBox_sup2.getSelectedItem().toString().equals(""))
 				{
 					if (!textField_price2.getText().trim().matches("[-+]?\\d*\\.?\\d+"))
 					{
@@ -581,9 +733,21 @@ public class CalculatorFrame extends JFrame
 						textField_price2.selectAll();
 						return;
 					}
+					if (comboBox_sup2.getSelectedItem().toString().equals(""))
+					{
+						JOptionPane.showMessageDialog(CalculatorFrame.this, "Please select Supplier");
+						comboBox_sup2.requestFocus();
+						return;
+					}
+					if(comboBox_item2.getSelectedItem().toString().equals(""))
+					{
+						JOptionPane.showMessageDialog(CalculatorFrame.this, "Please select Item");
+						comboBox_item2.requestFocus();
+						return;
+					}
 				}
 				
-				if ((String)comboBox_item3.getSelectedItem() != "")
+				if (!comboBox_item3.getSelectedItem().toString().equals("") || !textField_price3.getText().toString().equals("")|| !comboBox_sup3.getSelectedItem().toString().equals(""))
 				{
 					if (!textField_price3.getText().trim().matches("[-+]?\\d*\\.?\\d+"))
 					{
@@ -592,9 +756,21 @@ public class CalculatorFrame extends JFrame
 						textField_price3.selectAll();
 						return;
 					}
+					if (comboBox_sup3.getSelectedItem().toString().equals(""))
+					{
+						JOptionPane.showMessageDialog(CalculatorFrame.this, "Please select Supplier");
+						comboBox_sup3.requestFocus();
+						return;
+					}
+					if(comboBox_item3.getSelectedItem().toString().equals(""))
+					{
+						JOptionPane.showMessageDialog(CalculatorFrame.this, "Please select Item");
+						comboBox_item3.requestFocus();
+						return;
+					}
 				}
 				
-				if ((String)comboBox_item4.getSelectedItem() != "")
+				if (!comboBox_item4.getSelectedItem().toString().equals("") || !textField_price4.getText().toString().equals("")|| !comboBox_sup4.getSelectedItem().toString().equals(""))
 				{
 					if (!textField_price4.getText().trim().matches("[-+]?\\d*\\.?\\d+"))
 					{
@@ -603,9 +779,21 @@ public class CalculatorFrame extends JFrame
 						textField_price4.selectAll();
 						return;
 					}
+					if (comboBox_sup4.getSelectedItem().toString().equals(""))
+					{
+						JOptionPane.showMessageDialog(CalculatorFrame.this, "Please select Supplier");
+						comboBox_sup4.requestFocus();
+						return;
+					}
+					if(comboBox_item4.getSelectedItem().toString().equals(""))
+					{
+						JOptionPane.showMessageDialog(CalculatorFrame.this, "Please select Item");
+						comboBox_item4.requestFocus();
+						return;
+					}
 				}
 				
-				if ((String)comboBox_item5.getSelectedItem() != "")
+				if (!comboBox_item5.getSelectedItem().toString().equals("") || !textField_price5.getText().toString().equals("")|| !comboBox_sup5.getSelectedItem().toString().equals(""))
 				{
 					if (!textField_price5.getText().trim().matches("[-+]?\\d*\\.?\\d+"))
 					{
@@ -614,9 +802,21 @@ public class CalculatorFrame extends JFrame
 						textField_price5.selectAll();
 						return;
 					}
+					if (comboBox_sup5.getSelectedItem().toString().equals(""))
+					{
+						JOptionPane.showMessageDialog(CalculatorFrame.this, "Please select Supplier");
+						comboBox_sup5.requestFocus();
+						return;
+					}
+					if(comboBox_item5.getSelectedItem().toString().equals(""))
+					{
+						JOptionPane.showMessageDialog(CalculatorFrame.this, "Please select Item");
+						comboBox_item5.requestFocus();
+						return;
+					}
 				}
 				
-				if ((String)comboBox_item6.getSelectedItem() != "")
+				if (!comboBox_item6.getSelectedItem().toString().equals("") || !textField_price6.getText().toString().equals("")|| !comboBox_sup6.getSelectedItem().toString().equals(""))
 				{
 					if (!textField_price6.getText().trim().matches("[-+]?\\d*\\.?\\d+"))
 					{
@@ -625,14 +825,42 @@ public class CalculatorFrame extends JFrame
 						textField_price6.selectAll();
 						return;
 					}
+					if (comboBox_sup6.getSelectedItem().toString().equals(""))
+					{
+						JOptionPane.showMessageDialog(CalculatorFrame.this, "Please select Supplier");
+						comboBox_sup6.requestFocus();
+						return;
+					}
+					if(comboBox_item6.getSelectedItem().toString().equals(""))
+					{
+						JOptionPane.showMessageDialog(CalculatorFrame.this, "Please select Item");
+						comboBox_item6.requestFocus();
+						return;
+					}
 				}
 				
-				if(JOptionPane.showConfirmDialog(CalculatorFrame.this, "Are you sure inputs are correct?", "Confirm Calculate", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.NO_OPTION)
+				if (comboBox_drinker1.getSelectedItem().toString().equals(""))
+				{
+					JOptionPane.showMessageDialog(CalculatorFrame.this, "Please select at least 2 Drinkers!");
+					comboBox_drinker1.requestFocus();
+					return;
+				}
+				
+				if(comboBox_drinker2.isEnabled() == true && comboBox_drinker2.getSelectedItem().toString().equals(""))
+				{
+					JOptionPane.showMessageDialog(CalculatorFrame.this, "Please select at least 2 Drinkers!");
+					comboBox_drinker2.requestFocus();
+					return;
+				}
+				
+				if(JOptionPane.showConfirmDialog(CalculatorFrame.this, "Are you sure inputs are correct?", "Confirm Calculate", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.CANCEL_OPTION)
 				{
 					return;
 				}
 				
 				CalculatorFrame.this.setVisible(false);
+				
+//Add to NEW billing_id
 				
 				CalculatorDB x = new CalculatorDB(0,
 						sqlDate,
@@ -646,7 +874,7 @@ public class CalculatorFrame extends JFrame
 				
 //add ingredient to DB
 				
-				if ((String)comboBox_item1.getSelectedItem() != "")
+				if (comboBox_item1.isEnabled() == true && !comboBox_item1.getSelectedItem().toString().equals(""))
 				{
 					ItemDB x1 = new ItemDB(
 							(String)comboBox_item1.getSelectedItem(),
@@ -656,7 +884,7 @@ public class CalculatorFrame extends JFrame
 					CalculatorManager.addItem(x1);
 					totalPerPot += Double.parseDouble(textField_price1.getText());
 				}
-				if ((String)comboBox_item2.getSelectedItem() != "")
+				if (comboBox_item2.isEnabled() == true && !comboBox_item2.getSelectedItem().toString().equals(""))
 				{
 					ItemDB x1 = new ItemDB(
 							(String)comboBox_item2.getSelectedItem(),
@@ -666,7 +894,7 @@ public class CalculatorFrame extends JFrame
 					CalculatorManager.addItem(x1);
 					totalPerPot += Double.parseDouble(textField_price2.getText());
 				}
-				if ((String)comboBox_item3.getSelectedItem() != "")
+				if (comboBox_item3.isEnabled() == true && !comboBox_item3.getSelectedItem().toString().equals(""))
 				{
 					ItemDB x1 = new ItemDB(
 							(String)comboBox_item3.getSelectedItem(),
@@ -676,7 +904,7 @@ public class CalculatorFrame extends JFrame
 					CalculatorManager.addItem(x1);
 					totalPerPot += Double.parseDouble(textField_price3.getText());
 				}
-				if ((String)comboBox_item4.getSelectedItem() != "")
+				if (comboBox_item4.isEnabled() == true && !comboBox_item4.getSelectedItem().toString().equals(""))
 				{
 					ItemDB x1 = new ItemDB(
 							(String)comboBox_item4.getSelectedItem(),
@@ -686,7 +914,7 @@ public class CalculatorFrame extends JFrame
 					CalculatorManager.addItem(x1);
 					totalPerPot += Double.parseDouble(textField_price4.getText());
 				}
-				if ((String)comboBox_item5.getSelectedItem() != "")
+				if (comboBox_item5.isEnabled() == true && !comboBox_item5.getSelectedItem().toString().equals(""))
 				{
 					ItemDB x1 = new ItemDB(
 							(String)comboBox_item5.getSelectedItem(),
@@ -696,7 +924,7 @@ public class CalculatorFrame extends JFrame
 					CalculatorManager.addItem(x1);
 					totalPerPot += Double.parseDouble(textField_price5.getText());
 				}
-				if ((String)comboBox_item6.getSelectedItem() != "")
+				if (comboBox_item6.isEnabled() == true && !comboBox_item6.getSelectedItem().toString().equals(""))
 				{
 					ItemDB x1 = new ItemDB(
 							(String)comboBox_item6.getSelectedItem(),
@@ -709,7 +937,7 @@ public class CalculatorFrame extends JFrame
 				
 //Add drinker to DB & Calculate Adv_pay
 				
-				if ((String) comboBox_drinker1.getSelectedItem() != "")
+				if (comboBox_drinker1.isEnabled() == true && !comboBox_drinker1.getSelectedItem().toString().equals(""))
 				{
 					DrinkerDB x1 = new DrinkerDB(
 							0,
@@ -720,7 +948,7 @@ public class CalculatorFrame extends JFrame
 					countDrinker++;
 				}
 				
-				if ((String) comboBox_drinker2.getSelectedItem() != "")
+				if (comboBox_drinker2.isEnabled() == true && !comboBox_drinker2.getSelectedItem().toString().equals(""))
 				{
 					DrinkerDB x1 = new DrinkerDB(
 							0,
@@ -731,7 +959,7 @@ public class CalculatorFrame extends JFrame
 					countDrinker++;
 				}
 				
-				if ((String) comboBox_drinker3.getSelectedItem() != "")
+				if (comboBox_drinker3.isEnabled() == true && !comboBox_drinker3.getSelectedItem().toString().equals(""))
 				{
 					DrinkerDB x1 = new DrinkerDB(
 							0,
@@ -742,7 +970,7 @@ public class CalculatorFrame extends JFrame
 					countDrinker++;
 				}
 				
-				if ((String) comboBox_drinker4.getSelectedItem() != "")
+				if (comboBox_drinker4.isEnabled() == true && !comboBox_drinker4.getSelectedItem().toString().equals(""))
 				{
 					DrinkerDB x1 = new DrinkerDB(
 							0,
@@ -753,7 +981,7 @@ public class CalculatorFrame extends JFrame
 					countDrinker++;
 				}
 				
-				if ((String) comboBox_drinker5.getSelectedItem() != "")
+				if (comboBox_drinker5.isEnabled() == true && !comboBox_drinker5.getSelectedItem().toString().equals(""))
 				{
 					DrinkerDB x1 = new DrinkerDB(
 							0,
@@ -764,7 +992,7 @@ public class CalculatorFrame extends JFrame
 					countDrinker++;
 				}
 				
-				if ((String) comboBox_drinker6.getSelectedItem() != "")
+				if (comboBox_drinker6.isEnabled() == true && !comboBox_drinker6.getSelectedItem().toString().equals(""))
 				{
 					DrinkerDB x1 = new DrinkerDB(
 							0,
@@ -775,7 +1003,7 @@ public class CalculatorFrame extends JFrame
 					countDrinker++;
 				}
 				
-				if ((String) comboBox_drinker7.getSelectedItem() != "")
+				if (comboBox_drinker7.isEnabled() == true && !comboBox_drinker7.getSelectedItem().toString().equals(""))
 				{
 					DrinkerDB x1 = new DrinkerDB(
 							0,
@@ -786,7 +1014,7 @@ public class CalculatorFrame extends JFrame
 					countDrinker++;
 				}
 				
-				if ((String) comboBox_drinker8.getSelectedItem() != "")
+				if (comboBox_drinker8.isEnabled() == true && !comboBox_drinker8.getSelectedItem().toString().equals(""))
 				{
 					DrinkerDB x1 = new DrinkerDB(
 							0,
@@ -797,7 +1025,7 @@ public class CalculatorFrame extends JFrame
 					countDrinker++;
 				}
 				
-				GlobalData.CurrentResult_date = myDate.toString();
+				GlobalData.CurrentResult_date = sqlDate.toString();
 				GlobalData.CurrentResult_potno = numofpot;
 				GlobalData.CurrentResult_totalcup = totalcup;
 				GlobalData.CurrentResult_user_nickname = GlobalData.CurrentUser_nickname;
@@ -885,13 +1113,13 @@ public class CalculatorFrame extends JFrame
 	public ArrayList<String> loadnicknameDrinker()
 	{
 		list_user = UserManager.getAllUser();
-		list_nickname = new ArrayList<String>();
-		list_nickname.add("");
+		list_nickname_drinker = new ArrayList<String>();
+		list_nickname_drinker.add("");
 		for (UserDB c: list_user)
 		{
-			list_nickname.add(c.nickname);
+			list_nickname_drinker.add(c.nickname);
 		}
-		return list_nickname;
+		return list_nickname_drinker;
 	}
 	
 	/**
@@ -930,5 +1158,17 @@ public class CalculatorFrame extends JFrame
 			}
 			CalculatorManager.setGetBack(Double.parseDouble(getback.getText().toString()), (String) drinker.getSelectedItem());
 		}
+	}
+	
+	public void refreshDrinkerlist()
+	{
+		comboBox_drinker1.setModel(new DefaultComboBoxModel<>(list_nickname_drinker.toArray()));
+		comboBox_drinker2.setModel(new DefaultComboBoxModel<>(list_nickname_drinker.toArray()));
+		comboBox_drinker3.setModel(new DefaultComboBoxModel<>(list_nickname_drinker.toArray()));
+		comboBox_drinker4.setModel(new DefaultComboBoxModel<>(list_nickname_drinker.toArray()));
+		comboBox_drinker5.setModel(new DefaultComboBoxModel<>(list_nickname_drinker.toArray()));
+		comboBox_drinker6.setModel(new DefaultComboBoxModel<>(list_nickname_drinker.toArray()));
+		comboBox_drinker7.setModel(new DefaultComboBoxModel<>(list_nickname_drinker.toArray()));
+		comboBox_drinker8.setModel(new DefaultComboBoxModel<>(list_nickname_drinker.toArray()));
 	}
 }

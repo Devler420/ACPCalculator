@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
+import C.GlobalData;
 import M.UserDB;
 import M.UserManager;
 
@@ -258,8 +259,11 @@ public class UserFrame extends JFrame
 		btn_Delete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				String adminpass = JOptionPane.showInputDialog("Enter Admin password");
-				if (!adminpass.equals("12345678")) return;
+				if (!GlobalData.CurrentUser_nickname.equals("Boom"))
+				{
+					JOptionPane.showMessageDialog(UserFrame.this, "Permission Denied");
+					return;
+				}
 				
 				if (JOptionPane.showConfirmDialog(UserFrame.this, "Are you sure you want to delete?", "Delete?", JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION)
 				{
