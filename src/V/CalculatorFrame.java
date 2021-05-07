@@ -653,6 +653,7 @@ public class CalculatorFrame extends JFrame
 				if (dateChooser.getDate() == null)
 				{
 					JOptionPane.showMessageDialog(CalculatorFrame.this, "Please Select DATE!");
+					dateChooser.requestFocusInWindow();
 					return;
 				}
 				
@@ -851,6 +852,73 @@ public class CalculatorFrame extends JFrame
 					JOptionPane.showMessageDialog(CalculatorFrame.this, "Please select at least 2 Drinkers!");
 					comboBox_drinker2.requestFocus();
 					return;
+				}
+				
+				ArrayList<String> decoySupplier = new ArrayList<>();
+				ArrayList<String> decoyDrinker = new ArrayList<>();
+				
+				if (!comboBox_item1.getSelectedItem().toString().equals(""))
+				{
+					decoySupplier.add(comboBox_sup1.getSelectedItem().toString());
+				}
+				if (!comboBox_item2.getSelectedItem().toString().equals(""))
+				{
+					decoySupplier.add(comboBox_sup2.getSelectedItem().toString());
+				}
+				if (!comboBox_item3.getSelectedItem().toString().equals(""))
+				{
+					decoySupplier.add(comboBox_sup3.getSelectedItem().toString());
+				}
+				if (!comboBox_item4.getSelectedItem().toString().equals(""))
+				{
+					decoySupplier.add(comboBox_sup4.getSelectedItem().toString());
+				}
+				if (!comboBox_item5.getSelectedItem().toString().equals(""))
+				{
+					decoySupplier.add(comboBox_sup5.getSelectedItem().toString());
+				}
+				if (!comboBox_item6.getSelectedItem().toString().equals(""))
+				{
+					decoySupplier.add(comboBox_sup6.getSelectedItem().toString());
+				}
+				
+				if(comboBox_drinker2.isEnabled() == true)
+				{
+					decoyDrinker.add(comboBox_drinker1.getSelectedItem().toString());
+					decoyDrinker.add(comboBox_drinker2.getSelectedItem().toString());
+				}
+				if(comboBox_drinker3.isEnabled() == true)
+				{
+					decoyDrinker.add(comboBox_drinker3.getSelectedItem().toString());
+				}
+				if(comboBox_drinker4.isEnabled() == true)
+				{
+					decoyDrinker.add(comboBox_drinker4.getSelectedItem().toString());
+				}
+				if(comboBox_drinker5.isEnabled() == true)
+				{
+					decoyDrinker.add(comboBox_drinker5.getSelectedItem().toString());
+				}
+				if(comboBox_drinker6.isEnabled() == true)
+				{
+					decoyDrinker.add(comboBox_drinker6.getSelectedItem().toString());
+				}
+				if(comboBox_drinker7.isEnabled() == true)
+				{
+					decoyDrinker.add(comboBox_drinker7.getSelectedItem().toString());
+				}
+				if(comboBox_drinker8.isEnabled() == true)
+				{
+					decoyDrinker.add(comboBox_drinker8.getSelectedItem().toString());
+				}
+				
+				for (int i=0;i<decoySupplier.size();i++)
+				{
+					if (decoyDrinker.contains(decoySupplier.get(i)) == false)
+					{
+						JOptionPane.showMessageDialog(CalculatorFrame.this, "All Supplier must exist in Drinker!! (For more info: Call BOOM)");
+						return;
+					}
 				}
 				
 				if(JOptionPane.showConfirmDialog(CalculatorFrame.this, "Are you sure inputs are correct?", "Confirm Calculate", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.CANCEL_OPTION)
@@ -1160,15 +1228,4 @@ public class CalculatorFrame extends JFrame
 		}
 	}
 	
-	public void refreshDrinkerlist()
-	{
-		comboBox_drinker1.setModel(new DefaultComboBoxModel<>(list_nickname_drinker.toArray()));
-		comboBox_drinker2.setModel(new DefaultComboBoxModel<>(list_nickname_drinker.toArray()));
-		comboBox_drinker3.setModel(new DefaultComboBoxModel<>(list_nickname_drinker.toArray()));
-		comboBox_drinker4.setModel(new DefaultComboBoxModel<>(list_nickname_drinker.toArray()));
-		comboBox_drinker5.setModel(new DefaultComboBoxModel<>(list_nickname_drinker.toArray()));
-		comboBox_drinker6.setModel(new DefaultComboBoxModel<>(list_nickname_drinker.toArray()));
-		comboBox_drinker7.setModel(new DefaultComboBoxModel<>(list_nickname_drinker.toArray()));
-		comboBox_drinker8.setModel(new DefaultComboBoxModel<>(list_nickname_drinker.toArray()));
-	}
 }

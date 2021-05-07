@@ -57,7 +57,7 @@ public class MainFrame extends JFrame
 	 */
 	public MainFrame()
 	{
-		setTitle("ACPCalculator V1.0");
+		setTitle("ACPCalculator");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 721, 411);
 		setLocationRelativeTo(null);
@@ -90,6 +90,12 @@ public class MainFrame extends JFrame
 		contentPane.add(btn_toDB);
 		
 		JButton btn_stat = new JButton("Statistics/Report");
+		btn_stat.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ReportFrame f = new ReportFrame();
+				f.setVisible(true);
+			}
+		});
 		btn_stat.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btn_stat.setBounds(21, 193, 276, 56);
 		contentPane.add(btn_stat);

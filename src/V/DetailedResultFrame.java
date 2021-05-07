@@ -86,56 +86,60 @@ public class DetailedResultFrame extends JFrame
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Date :");
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblNewLabel_2.setBounds(10, 62, 45, 23);
+		lblNewLabel_2.setVerticalAlignment(SwingConstants.BOTTOM);
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 22));
+		lblNewLabel_2.setBounds(10, 38, 79, 47);
 		contentPane.add(lblNewLabel_2);
 		
 		JLabel label_date = new JLabel(GlobalData.CurrentResult_date);
-		label_date.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		label_date.setBounds(53, 62, 85, 23);
+		label_date.setVerticalAlignment(SwingConstants.BOTTOM);
+		label_date.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		label_date.setBounds(84, 38, 182, 47);
 		contentPane.add(label_date);
 		
 		JLabel lblNewLabel_potnumber = new JLabel("POT#");
-		lblNewLabel_potnumber.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblNewLabel_potnumber.setBounds(175, 61, 35, 24);
+		lblNewLabel_potnumber.setVerticalAlignment(SwingConstants.BOTTOM);
+		lblNewLabel_potnumber.setFont(new Font("Tahoma", Font.BOLD, 22));
+		lblNewLabel_potnumber.setBounds(237, 38, 79, 47);
 		contentPane.add(lblNewLabel_potnumber);
 		
 		JLabel lbl_potno = new JLabel(""+GlobalData.CurrentResult_potno);
+		lbl_potno.setVerticalAlignment(SwingConstants.BOTTOM);
 		lbl_potno.setHorizontalAlignment(SwingConstants.CENTER);
-		lbl_potno.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lbl_potno.setBounds(206, 62, 24, 23);
+		lbl_potno.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		lbl_potno.setBounds(311, 38, 24, 47);
 		contentPane.add(lbl_potno);
 		
 		JLabel lblNewLabel_3 = new JLabel("Type :");
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblNewLabel_3.setBounds(253, 61, 45, 24);
+		lblNewLabel_3.setBounds(395, 61, 45, 24);
 		contentPane.add(lblNewLabel_3);
 		
 		JLabel lbl_pottype = new JLabel(GlobalData.CurrentResult_pottype);
 		lbl_pottype.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lbl_pottype.setBounds(298, 62, 46, 23);
+		lbl_pottype.setBounds(440, 62, 46, 23);
 		contentPane.add(lbl_pottype);
 		
 		JLabel lblNewLabel_4 = new JLabel("Total Cup :");
 		lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblNewLabel_4.setBounds(354, 61, 74, 24);
+		lblNewLabel_4.setBounds(496, 61, 74, 24);
 		contentPane.add(lblNewLabel_4);
 		
 		JLabel lbl_totalcup = new JLabel(""+GlobalData.CurrentResult_totalcup);
 		lbl_totalcup.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lbl_totalcup.setHorizontalAlignment(SwingConstants.CENTER);
-		lbl_totalcup.setBounds(427, 62, 36, 23);
+		lbl_totalcup.setBounds(569, 62, 36, 23);
 		contentPane.add(lbl_totalcup);
 		
 		JLabel lblNewLabel_5 = new JLabel("Created By :");
 		lblNewLabel_5.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblNewLabel_5.setBounds(473, 61, 85, 24);
+		lblNewLabel_5.setBounds(615, 61, 85, 24);
 		contentPane.add(lblNewLabel_5);
 		
 		JLabel lbl_createdbyusers = new JLabel(GlobalData.CurrentResult_user_nickname);
 		lbl_createdbyusers.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lbl_createdbyusers.setHorizontalAlignment(SwingConstants.LEFT);
-		lbl_createdbyusers.setBounds(557, 62, 116, 23);
+		lbl_createdbyusers.setBounds(699, 62, 116, 23);
 		contentPane.add(lbl_createdbyusers);
 		
 		JScrollPane scrollPane = new JScrollPane();

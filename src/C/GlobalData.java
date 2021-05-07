@@ -10,6 +10,10 @@ public class GlobalData
 	public static final String DATABASE_PASSWORD = "Bookboom";
 	public static final String DATABASE_DATABASE_NAME = "ACPDatabase";
 	
+	//Change this when there are new updates
+	public static double ProgramVersion = 1.2;
+	public static String ProgramComment;
+	public static boolean ProgramVersionPerm;
 	
 	public static int CurrentUser_userID;
 	public static String CurrentUser_username;
@@ -24,4 +28,6 @@ public class GlobalData
 	public static double CurrentResult_totalcup;
 	public static int CurrentResult_usersid;
 	public static String CurrentResult_user_nickname;
+	
+	
 }

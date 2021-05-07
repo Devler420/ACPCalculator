@@ -163,4 +163,51 @@ public class UserManager
 		
 		return false;
 	}
+	
+	public static boolean checkVersion(double x)
+	{
+		try
+	    {
+	      String myDriver = "com.mysql.cj.jdbc.Driver";
+	      String myUrl = "jdbc:mysql://"+GlobalData.DATABASE_LOCATION+":"+GlobalData.DATABASE_PORT+"/"+GlobalData.DATABASE_DATABASE_NAME; //!!!!!!!!!!!!!SET LOCAL HOST
+	      Class.forName(myDriver);
+	      Connection conn = DriverManager.getConnection(myUrl, GlobalData.DATABASE_USERNAME, GlobalData.DATABASE_PASSWORD); //!!!!!!!!!!Set our username (PHPmyadmin user)
+	      
+	      
+	     //*** MAIN SQL command to UPDATE!!!!!!!!!!
+	      //must have WHERE!
+	      String query = "SELECT * FROM version_control WHERE version_control_version = ?";
+	      PreparedStatement st = conn.prepareStatement(query);
+	      st.setDouble(1, x);
+	      ResultSet rs = st.executeQuery();
+	      
+	      double ver;
+	      boolean verPerm;
+	      String verComment;
+	      
+	      while (rs.next())
+	      {
+	    	  ver = rs.getDouble(2);
+	    	  verPerm = rs.getBoolean(3);
+	    	  verComment = rs.getString(4);
+	    	  //if correct pw!!!!!!!!!!!!!!!
+	    	  if (verPerm == true)
+	    	  {
+	    		  return true;
+	    	  }
+	    	  else
+	    	  {
+	    		  GlobalData.ProgramComment = verComment;
+	    		  return false;
+	    	  }
+	      }
+	      st.close();
+	    }
+	    catch (Exception e)
+	    {
+	      System.err.println("Got an exception! ");
+	      System.err.println(e.getMessage());
+	    }
+		return false;
+	}
 }

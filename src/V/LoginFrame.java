@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import C.GlobalData;
 import M.UserManager;
 
 import javax.swing.JLabel;
@@ -92,6 +93,7 @@ public class LoginFrame extends JFrame
 			public void keyReleased(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_ENTER)
 				{
+					versionCheck();
 					login();
 				}
 			}
@@ -112,6 +114,7 @@ public class LoginFrame extends JFrame
 			public void keyReleased(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_ENTER)
 				{
+					versionCheck();
 					login();
 				}
 			}
@@ -122,6 +125,7 @@ public class LoginFrame extends JFrame
 		JButton btnLogin = new JButton("Login");
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				versionCheck();
 				login();
 			}
 		});
@@ -136,6 +140,17 @@ public class LoginFrame extends JFrame
 		});
 		btnExit.setBounds(247, 214, 144, 36);
 		contentPane.add(btnExit);
+		
+		JLabel lblv = new JLabel("Version");
+		lblv.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblv.setHorizontalAlignment(SwingConstants.CENTER);
+		lblv.setBounds(382, 11, 53, 14);
+		contentPane.add(lblv);
+		
+		JLabel lbl_version = new JLabel(""+GlobalData.ProgramVersion);
+		lbl_version.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lbl_version.setBounds(435, 11, 25, 14);
+		contentPane.add(lbl_version);
 	}
 
 	public void login()
@@ -150,6 +165,19 @@ public class LoginFrame extends JFrame
 		else
 		{
 			JOptionPane.showMessageDialog(LoginFrame.this, "Wrong Username or Password!!!");
+		}
+	}
+	
+	public void versionCheck()
+	{
+		if (UserManager.checkVersion(GlobalData.ProgramVersion))
+		{
+			
+		}
+		else
+		{
+			JOptionPane.showMessageDialog(LoginFrame.this, GlobalData.ProgramComment);
+			return;
 		}
 	}
 }

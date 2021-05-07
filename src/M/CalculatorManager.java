@@ -102,6 +102,47 @@ public class CalculatorManager
 		return list;
 	}
 	
+	public static ArrayList<CalculatorDB> searchAllResultByDate(String s)
+	{
+		ArrayList<CalculatorDB> list = new ArrayList<CalculatorDB>();
+		try
+	    {
+	      String myDriver = "com.mysql.cj.jdbc.Driver";
+	      String myUrl = "jdbc:mysql://"+GlobalData.DATABASE_LOCATION+":"+GlobalData.DATABASE_PORT+"/"+GlobalData.DATABASE_DATABASE_NAME; //!!!!!!!!!!!!!SET LOCAL HOST
+	      Class.forName(myDriver);
+	      Connection conn = DriverManager.getConnection(myUrl, GlobalData.DATABASE_USERNAME, GlobalData.DATABASE_PASSWORD); //!!!!!!!!!!Set our username (PHPmyadmin user)
+	      
+	      String query = "SELECT * FROM billing_details_main WHERE billing_date LIKE '%"+s+"%'";
+	      Statement st = conn.createStatement();
+	      ResultSet rs = st.executeQuery(query);
+	      
+	      while (rs.next())
+	      {
+	        int billing_id = rs.getInt("billing_id");
+	        java.sql.Date billing_date = rs.getDate("billing_date");
+	        int numofpot = rs.getInt("numofpot");
+	        String type = rs.getString("type");
+	        double totalcup = rs.getDouble("totalcup");
+	        double price_ppp = rs.getDouble("price_ppp");
+	        double price_ppc = rs.getDouble("price_ppc");
+	        String created_by_users = rs.getString("created_by_users");
+	        String edited_by_users = rs.getString("edited_by_users");
+	        // create new variable สร้างใหม่
+	        CalculatorDB cc = new CalculatorDB(billing_id,billing_date,numofpot,type,totalcup,price_ppp,price_ppc,created_by_users);
+	        list.add(cc);
+	        
+	      }
+	      st.close();
+	    }
+	    catch (Exception e)
+	    {
+	      System.err.println("Got an exception! ");
+	      System.err.println(e.getMessage());
+	    }
+		
+		return list;
+	}
+	
 	public static void addBill(CalculatorDB x)
 	{
 		try

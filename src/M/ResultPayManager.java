@@ -46,4 +46,5 @@ public class ResultPayManager
 		
 		return list;
 	}
+	
 }
