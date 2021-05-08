@@ -280,7 +280,7 @@ public class ResultFrame extends JFrame
 		if (returnVal == JFileChooser.APPROVE_OPTION)
 		{
 			File fileToSave = fc.getSelectedFile();
-		    System.out.println("Save as file: " + fileToSave.getAbsolutePath());
+//		    System.out.println("Save as file: " + fileToSave.getAbsolutePath());
 			try
 			{
 				ImageIO.write(image, "jpeg", new File(fileToSave+".jpeg"));

@@ -669,6 +669,14 @@ public class CalculatorFrame extends JFrame
 				Date myDate = (dateChooser.getDate());
 				sqlDate = new java.sql.Date(myDate.getTime());
 				
+//Check already existed pot in DB
+				if(CalculatorManager.checkExistPot(numofpot, sqlDate) == true)
+				{
+					JOptionPane.showMessageDialog(CalculatorFrame.this, "POT#"+numofpot+" already existed, Please change POT#");
+					spinner_potno.requestFocusInWindow();
+					return;
+				}
+				
 				totalcup = ((double) comboBox_cup1.getSelectedItem());
 				
 				if (comboBox_cup2.isEnabled() == true)
@@ -1158,6 +1166,44 @@ public class CalculatorFrame extends JFrame
 		lbl_potno.setBounds(208, 74, 46, 30);
 		contentPane.add(lbl_potno);
 		
+		JButton btn_resetDrinker = new JButton("RESET Drinker");
+		btn_resetDrinker.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				loadnicknameDrinker();
+				comboBox_drinker1.setModel(new DefaultComboBoxModel<>(list_nickname_drinker.toArray()));
+				
+				comboBox_drinker2.setEnabled(false);
+				comboBox_cup2.setEnabled(false);
+				
+				comboBox_drinker3.setEnabled(false);
+				comboBox_cup3.setEnabled(false);
+				
+				comboBox_drinker4.setEnabled(false);
+				comboBox_cup4.setEnabled(false);
+				
+				comboBox_drinker5.setEnabled(false);
+				comboBox_cup5.setEnabled(false);
+				
+				comboBox_drinker6.setEnabled(false);
+				comboBox_cup6.setEnabled(false);
+				
+				comboBox_drinker7.setEnabled(false);
+				comboBox_cup7.setEnabled(false);
+				
+				comboBox_drinker8.setEnabled(false);
+				comboBox_cup8.setEnabled(false);
+			
+				comboBox_drinker1.setEnabled(true);
+				comboBox_cup1.setEnabled(true);
+				comboBox_drinker1.setSelectedIndex(0);
+				
+			}
+		});
+		btn_resetDrinker.setFont(new Font("Tahoma", Font.BOLD, 10));
+		btn_resetDrinker.setBounds(368, 88, 115, 26);
+		contentPane.add(btn_resetDrinker);
+		
 	}
 	
 	/**
@@ -1227,5 +1273,4 @@ public class CalculatorFrame extends JFrame
 			CalculatorManager.setGetBack(Double.parseDouble(getback.getText().toString()), (String) drinker.getSelectedItem());
 		}
 	}
-	
 }

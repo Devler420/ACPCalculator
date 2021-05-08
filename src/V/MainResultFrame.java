@@ -170,9 +170,17 @@ public class MainResultFrame extends JFrame
 					return;
 				}
 				
-				CalculatorManager.deleteBill();
-				load();
-				JOptionPane.showMessageDialog(MainResultFrame.this, "Delete Complete");
+				if (JOptionPane.showConfirmDialog(MainResultFrame.this, "Are you sure you want to Delete?", "Confirm Delete?", JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION)
+				{
+					CalculatorManager.deleteBill();
+					load();
+					JOptionPane.showMessageDialog(MainResultFrame.this, "Delete Complete");
+				}
+				else
+				{
+					return;
+				}
+				
 			}
 		});
 		btnDeleteCal.setFont(new Font("Tahoma", Font.BOLD, 14));

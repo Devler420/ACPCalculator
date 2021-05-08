@@ -11,19 +11,26 @@ import javax.swing.JOptionPane;
 
 import java.awt.CardLayout;
 import javax.swing.JLabel;
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.border.MatteBorder;
+import javax.swing.filechooser.FileFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
 import java.awt.Color;
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
+
 import com.toedter.calendar.JDateChooser;
 
 import M.CalculatorDB;
@@ -35,6 +42,8 @@ import M.UserManager;
 
 import javax.swing.SwingConstants;
 import java.awt.Font;
+import java.awt.Graphics;
+
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.RowSorter;
@@ -128,19 +137,19 @@ public class ReportFrame extends JFrame
 		panel_pay.add(lblNewLabel_3);
 		
 		JDateChooser dCpay_begin = new JDateChooser();
-		dCpay_begin.setBounds(107, 75, 109, 27);
+		dCpay_begin.setBounds(107, 78, 198, 27);
 		dCpay_begin.setDateFormatString("yyyy-MM-dd");
 		panel_pay.add(dCpay_begin);
 		
 		JDateChooser dCpay_end = new JDateChooser();
-		dCpay_end.setBounds(272, 75, 109, 27);
+		dCpay_end.setBounds(362, 79, 198, 27);
 		dCpay_end.setDateFormatString("yyyy-MM-dd");
 		panel_pay.add(dCpay_end);
 		
 		JLabel lbldash = new JLabel("-");
 		lbldash.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lbldash.setHorizontalAlignment(SwingConstants.CENTER);
-		lbldash.setBounds(216, 74, 55, 27);
+		lbldash.setBounds(306, 79, 55, 27);
 		panel_pay.add(lbldash);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -176,13 +185,13 @@ public class ReportFrame extends JFrame
 				
 				if (!comboBox_payName.getSelectedItem().toString().equals("") && dCpay_begin.getDate() == null && dCpay_end.getDate() == null)
 				{
-					System.out.println("ByName");
+//					System.out.println("ByName");
 					loadSumReportbyName(comboBox_payName.getSelectedItem().toString());
 					loadReportbyName(comboBox_payName.getSelectedItem().toString());
 				}
 				else if (comboBox_payName.getSelectedItem().toString().equals("") && dCpay_begin.getDate() != null && dCpay_end.getDate() != null)
 				{
-					System.out.println("ByDate");
+//					System.out.println("ByDate");
 					Date myDateBegin = (dCpay_begin.getDate());
 					Date myDateEnd = (dCpay_end.getDate());
 					sqlDateBegin = new java.sql.Date(myDateBegin.getTime());
@@ -192,7 +201,7 @@ public class ReportFrame extends JFrame
 				}
 				else if (!comboBox_payName.getSelectedItem().toString().equals("") && dCpay_begin.getDate() != null && dCpay_end.getDate() != null)
 				{
-					System.out.println("ByNameDate");
+//					System.out.println("ByNameDate");
 					Date myDateBegin = (dCpay_begin.getDate());
 					Date myDateEnd = (dCpay_end.getDate());
 					sqlDateBegin = new java.sql.Date(myDateBegin.getTime());
@@ -202,7 +211,7 @@ public class ReportFrame extends JFrame
 				}
 				else
 				{
-					System.out.println("ByNothing");
+//					System.out.println("ByNothing");
 					loadAllSumReport();
 					loadAllReport();
 				}
@@ -210,7 +219,7 @@ public class ReportFrame extends JFrame
 		});
 		btn_Search.setBackground(Color.YELLOW);
 		btn_Search.setFont(new Font("Tahoma", Font.BOLD, 15));
-		btn_Search.setBounds(446, 76, 95, 27);
+		btn_Search.setBounds(581, 79, 95, 27);
 		panel_pay.add(btn_Search);
 		
 		JButton btn_payclear = new JButton("CLEAR");
@@ -252,17 +261,19 @@ public class ReportFrame extends JFrame
 		panel_getback.add(lblNewLabel_3_1);
 		
 		JDateChooser dCgb_begin = new JDateChooser();
-		dCgb_begin.setBounds(107, 78, 109, 27);
+		dCgb_begin.setBounds(107, 78, 198, 27);
+		dCgb_begin.setDateFormatString("yyyy-MM-dd");
 		panel_getback.add(dCgb_begin);
 		
 		JDateChooser dCgb_end = new JDateChooser();
-		dCgb_end.setBounds(272, 78, 109, 27);
+		dCgb_end.setBounds(362, 79, 198, 27);
+		dCgb_end.setDateFormatString("yyyy-MM-dd");
 		panel_getback.add(dCgb_end);
 		
 		JLabel lbldash_1 = new JLabel("-");
 		lbldash_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lbldash_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lbldash_1.setBounds(216, 77, 55, 27);
+		lbldash_1.setBounds(306, 79, 55, 27);
 		panel_getback.add(lbldash_1);
 		
 		JScrollPane scrollPane_2 = new JScrollPane();
@@ -298,13 +309,13 @@ public class ReportFrame extends JFrame
 				
 				if (!comboBox_gbName.getSelectedItem().toString().equals("") && dCgb_begin.getDate() == null && dCgb_end.getDate() == null)
 				{
-					System.out.println("ByName2");
+//					System.out.println("ByName2");
 					loadAllGetBackReportbyName(comboBox_gbName.getSelectedItem().toString());
 					loadGetBackSumReportByName(comboBox_gbName.getSelectedItem().toString());
 				}
 				else if (comboBox_gbName.getSelectedItem().toString().equals("") && dCgb_begin.getDate() != null && dCgb_end.getDate() != null)
 				{
-					System.out.println("ByDate2");
+//					System.out.println("ByDate2");
 					Date myDateGBBegin = (dCgb_begin.getDate());
 					Date myDateGBEnd = (dCgb_end.getDate());
 					sqlDateGBBegin = new java.sql.Date(myDateGBBegin.getTime());
@@ -314,7 +325,7 @@ public class ReportFrame extends JFrame
 				}
 				else if (!comboBox_gbName.getSelectedItem().toString().equals("") && dCgb_begin.getDate() != null && dCgb_end.getDate() != null)
 				{
-					System.out.println("ByNameDate2");
+//					System.out.println("ByNameDate2");
 					Date myDateGBBegin = (dCgb_begin.getDate());
 					Date myDateGBEnd = (dCgb_end.getDate());
 					sqlDateGBBegin = new java.sql.Date(myDateGBBegin.getTime());
@@ -324,7 +335,7 @@ public class ReportFrame extends JFrame
 				}
 				else
 				{
-					System.out.println("ByNothing2");
+//					System.out.println("ByNothing2");
 					loadAllGetBackSumReport();
 					loadAllGetBackReport();
 				}
@@ -332,7 +343,7 @@ public class ReportFrame extends JFrame
 		});
 		btn_gb_search.setFont(new Font("Tahoma", Font.BOLD, 15));
 		btn_gb_search.setBackground(Color.YELLOW);
-		btn_gb_search.setBounds(432, 79, 95, 27);
+		btn_gb_search.setBounds(581, 79, 95, 27);
 		panel_getback.add(btn_gb_search);
 		
 		btn_gbclear = new JButton("CLEAR");
@@ -370,6 +381,17 @@ public class ReportFrame extends JFrame
 		});
 		btnNewButton.setBounds(430, 11, 137, 24);
 		contentPane.add(btnNewButton);
+		
+		JButton btn_savePicture = new JButton("Save As Picture");
+		btn_savePicture.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				saveImage(contentPane);
+			}
+		});
+		btn_savePicture.setForeground(Color.BLACK);
+		btn_savePicture.setBackground(new Color(50, 205, 50));
+		btn_savePicture.setBounds(850, 11, 147, 23);
+		contentPane.add(btn_savePicture);
 		
 		loadAllSumReport();
 		loadAllReport();
@@ -717,7 +739,7 @@ public class ReportFrame extends JFrame
 		DefaultTableModel model = new DefaultTableModel();
 		//สร้าง column
 		model.addColumn("Name");
-		model.addColumn("SUM Get Back");
+		model.addColumn("Get Back");
 		model.addColumn("from Who");
 		model.addColumn("Date");
 		model.addColumn("POT#");
@@ -745,7 +767,7 @@ public class ReportFrame extends JFrame
 		DefaultTableModel model = new DefaultTableModel();
 		//สร้าง column
 		model.addColumn("Name");
-		model.addColumn("SUM Get Back");
+		model.addColumn("Get Back");
 		model.addColumn("from Who");
 		model.addColumn("Date");
 		model.addColumn("POT#");
@@ -773,7 +795,7 @@ public class ReportFrame extends JFrame
 		DefaultTableModel model = new DefaultTableModel();
 		//สร้าง column
 		model.addColumn("Name");
-		model.addColumn("SUM Get Back");
+		model.addColumn("Get Back");
 		model.addColumn("from Who");
 		model.addColumn("Date");
 		model.addColumn("POT#");
@@ -801,7 +823,7 @@ public class ReportFrame extends JFrame
 		DefaultTableModel model = new DefaultTableModel();
 		//สร้าง column
 		model.addColumn("Name");
-		model.addColumn("SUM Get Back");
+		model.addColumn("Get Back");
 		model.addColumn("from Who");
 		model.addColumn("Date");
 		model.addColumn("POT#");
@@ -820,4 +842,30 @@ public class ReportFrame extends JFrame
 		table_gb2.setRowSorter(sorter);
 		List<RowSorter.SortKey> sortKeys = new ArrayList<>();
 	}
+	
+	private void saveImage(JPanel p) {
+        int w = p.getWidth(), h = p.getHeight();
+		BufferedImage image = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
+		Graphics g = image.createGraphics();
+		p.setVisible(true);
+		p.paint(g);
+       // Browse WHERE to save file (open file dialog)
+		JFileChooser fc = new JFileChooser();
+		fc.setDialogTitle("Specify location to save the picture");
+
+		int returnVal = fc.showSaveDialog(ReportFrame.this);
+		if (returnVal == JFileChooser.APPROVE_OPTION)
+		{
+			File fileToSave = fc.getSelectedFile();
+			try
+			{
+				ImageIO.write(image, "jpeg", new File(fileToSave+".jpeg"));
+			} catch (IOException e1)
+			{
+				e1.printStackTrace();
+			}
+		}
+    }
 }
+
+

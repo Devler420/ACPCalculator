@@ -462,4 +462,35 @@ public class CalculatorManager
 	      System.err.println(e.getMessage());
 	    }
 	}
+	
+	public static boolean checkExistPot(int numpot, java.sql.Date date)
+	{
+		try
+	    {
+	      String myDriver = "com.mysql.cj.jdbc.Driver";
+	      String myUrl = "jdbc:mysql://"+GlobalData.DATABASE_LOCATION+":"+GlobalData.DATABASE_PORT+"/"+GlobalData.DATABASE_DATABASE_NAME; //!!!!!!!!!!!!!SET LOCAL HOST
+	      Class.forName(myDriver);
+	      Connection conn = DriverManager.getConnection(myUrl, GlobalData.DATABASE_USERNAME, GlobalData.DATABASE_PASSWORD); //!!!!!!!!!!Set our username (PHPmyadmin user)
+	      
+	      String query = "SELECT numofpot, billing_date FROM ACPDatabase.billing_details_main WHERE billing_date = '"+date+"' AND numofpot = '"+numpot+"';";
+	      Statement st = conn.createStatement();
+	      ResultSet rs = st.executeQuery(query);
+
+	      while (rs.next())
+	      {
+
+	        int potnum = rs.getInt("numofpot");
+	        java.sql.Date theDate = rs.getDate("billing_date");
+	        return true;
+	      }
+	      
+	      st.close();
+	    }
+	    catch (Exception e)
+	    {
+	      System.err.println("Got an exception! ");
+	      System.err.println(e.getMessage());
+	    }
+		return false;
+	}
 }
