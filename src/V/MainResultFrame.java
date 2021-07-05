@@ -156,11 +156,6 @@ public class MainResultFrame extends JFrame
 		btnNewCal.setBounds(861, 107, 128, 40);
 		contentPane.add(btnNewCal);
 		
-		JButton btnEditCal = new JButton("EDIT");
-		btnEditCal.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnEditCal.setBounds(861, 187, 128, 40);
-		contentPane.add(btnEditCal);
-		
 		JButton btnDeleteCal = new JButton("DELETE"); //DELTE
 		btnDeleteCal.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -184,7 +179,7 @@ public class MainResultFrame extends JFrame
 			}
 		});
 		btnDeleteCal.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnDeleteCal.setBounds(861, 267, 128, 40);
+		btnDeleteCal.setBounds(861, 259, 128, 40);
 		contentPane.add(btnDeleteCal);
 		
 		JButton btn_refresh = new JButton("Refresh");
