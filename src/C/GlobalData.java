@@ -11,7 +11,7 @@ public class GlobalData
 	public static final String DATABASE_DATABASE_NAME = "ACPDatabase";
 	
 	//Change this when there are new updates
-	public static double ProgramVersion = 1.3;
+	public static double ProgramVersion = 1.4;
 	public static String ProgramComment;
 	public static boolean ProgramVersionPerm;
 	

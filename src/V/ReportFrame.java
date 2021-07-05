@@ -17,6 +17,7 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -152,6 +153,14 @@ public class ReportFrame extends JFrame
 		lbldash.setBounds(306, 79, 55, 27);
 		panel_pay.add(lbldash);
 		
+		JLabel lblBigDate = new JLabel("Date");
+		lblBigDate.setForeground(new Color(255, 0, 0));
+		lblBigDate.setFont(new Font("Tahoma", Font.BOLD, 45));
+		lblBigDate.setHorizontalAlignment(SwingConstants.CENTER);
+		lblBigDate.setBounds(362, 10, 363, 58);
+		panel_pay.add(lblBigDate);
+		lblBigDate.setVisible(false);
+		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 113, 479, 401);
 		panel_pay.add(scrollPane);
@@ -215,6 +224,23 @@ public class ReportFrame extends JFrame
 					loadAllSumReport();
 					loadAllReport();
 				}
+				
+				String beginDate = ""+dCpay_begin.getDate().toString().substring(4,10);
+				String endDate = ""+dCpay_end.getDate().toString().substring(4,10);
+				System.out.println(beginDate);
+				System.out.println(endDate);
+				
+				if(beginDate.equals(endDate))
+				{
+					lblBigDate.setVisible(true);
+					SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+					lblBigDate.setText(""+formatter.format(dCpay_begin.getDate()));
+				}
+				else
+				{
+					lblBigDate.setVisible(false);
+				}
+				
 			}
 		});
 		btn_Search.setBackground(Color.YELLOW);
@@ -339,6 +365,7 @@ public class ReportFrame extends JFrame
 					loadAllGetBackSumReport();
 					loadAllGetBackReport();
 				}
+				
 			}
 		});
 		btn_gb_search.setFont(new Font("Tahoma", Font.BOLD, 15));
