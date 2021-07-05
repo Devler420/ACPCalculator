@@ -341,7 +341,7 @@ public class UserFrame extends JFrame
 		for (UserDB c: list)
 		{
 			// เอาทุกอย่าง add ไปในโมเดล
-			model.addRow(new Object[] {c.users_id, c.username, c.password, c.nickname, c.email, c.mobile});
+			model.addRow(new Object[] {c.users_id, c.username, "**********", c.nickname, c.email, c.mobile});
 		}
 		
 		table.setModel(model);
