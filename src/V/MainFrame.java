@@ -127,7 +127,7 @@ public class MainFrame extends JFrame
 		
 		try
 		{	
-			BufferedImage bimg = ImageIO.read(getClass().getResource("/bicLighter.png"));
+			BufferedImage bimg = ImageIO.read(getClass().getResource("/mybro.jpg"));
 			imagePanel.setImage(bimg);
 		} catch (IOException e1)
 		{
