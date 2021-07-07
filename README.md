@@ -4,6 +4,8 @@ This is a Calculator program for a specific purpose. It is created to use intern
 
 Anyway my opinion is it can be adapt to **multi-purpose use**.
 
+**What it does?**
+
 The program will calculate expenses according to each person's proportional consumption. Store datas in cloud Database (MySQL) provided by Amazon Relational Database Service (RDS)
 
 **Such as**
