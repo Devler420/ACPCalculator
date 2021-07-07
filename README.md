@@ -7,7 +7,7 @@ The program will calculate expenses according to each person's proportional cons
 
 **Such as**
 
-Person A ---> Advanced paid for 75% / Consumed 25%.
+Person A ---> Advanced paid for 75% / Consumed 25%. \n
 Person B ---> Advanced paid for 0%  / Consumed 25%.
 Person C ---> Advanced paid for 25% / Consumed 25%.
 Person D ---> Advanced paid for 0%  / Consumed 25%.
