@@ -12,6 +12,7 @@ import javax.swing.border.EmptyBorder;
 import C.GlobalData;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -127,7 +128,7 @@ public class MainFrame extends JFrame
 		
 		try
 		{	
-			BufferedImage bimg = ImageIO.read(getClass().getResource("/bicLighter.png"));
+			BufferedImage bimg = ImageIO.read(getClass().getResource("/biclighter.png"));
 			imagePanel.setImage(bimg);
 		} catch (IOException e1)
 		{
