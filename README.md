@@ -28,34 +28,34 @@ Person C --->   Received back for 0%    / Additional payment for 0%.
 
 Person D --->   Received back for 0%    / Additional payment for 25%.   / Pay to Person A
 
-**Sample pictures of GUI**
-
-1. LoginFrame
-
-![Login-Frame](https://github.com/Devler420/ACPCalculator/blob/main/1LoginFrame.JPG)
-
-2. MainFrame
-
-![Main-Frame](https://github.com/Devler420/ACPCalculator/blob/main/2MainFrame.JPG)
-
-3. DatabaseResultFrame
-
-![DatabaseResult-Frame](https://github.com/Devler420/ACPCalculator/blob/main/3MainResultFrame.JPG)
-
-4. CalculatorFrame
-
-![Calculator-Frame](https://github.com/Devler420/ACPCalculator/blob/main/4CalculateFrame.JPG)
-
-5. ReportFrame
-
-![Report-Frame](https://github.com/Devler420/ACPCalculator/blob/main/5reportFrame.JPG)
-
-6. UserManagementFrame (Admin)
-
-![UserManagement-Frame](https://github.com/Devler420/ACPCalculator/blob/main/6UserFrame.JPG)
-
 **Simple GIF demonstrate the program.**
 
 ![Demo GIF](https://github.com/Devler420/ACPCalculator/blob/main/Animated%20GIF-downsized_large.gif)
+
+**Sample pictures of GUI**
+
+1. **LoginFrame**
+
+![Login-Frame](https://github.com/Devler420/ACPCalculator/blob/main/1LoginFrame.JPG)
+
+2. **MainFrame**
+
+![Main-Frame](https://github.com/Devler420/ACPCalculator/blob/main/2MainFrame.JPG)
+
+3. **DatabaseResultFrame**
+
+![DatabaseResult-Frame](https://github.com/Devler420/ACPCalculator/blob/main/3MainResultFrame.JPG)
+
+4. **CalculatorFrame**
+
+![Calculator-Frame](https://github.com/Devler420/ACPCalculator/blob/main/4CalculateFrame.JPG)
+
+5. **ReportFrame**
+
+![Report-Frame](https://github.com/Devler420/ACPCalculator/blob/main/5reportFrame.JPG)
+
+6. **UserManagementFrame** (Admin)
+
+![UserManagement-Frame](https://github.com/Devler420/ACPCalculator/blob/main/6UserFrame.JPG)
 
 Created by Devler420.
