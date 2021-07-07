@@ -32,15 +32,27 @@ Person D --->   Received back for 0%    / Additional payment for 25%.   / Pay to
 
 1. LoginFrame
 
+![Login-Frame](https://github.com/Devler420/ACPCalculator/blob/main/1LoginFrame.JPG)
+
 2. MainFrame
+
+![Main-Frame](https://github.com/Devler420/ACPCalculator/blob/main/2MainFrame.JPG)
 
 3. DatabaseResultFrame
 
+![DatabaseResult-Frame](https://github.com/Devler420/ACPCalculator/blob/main/3MainResultFrame.JPG)
+
 4. CalculatorFrame
+
+![Calculator-Frame](https://github.com/Devler420/ACPCalculator/blob/main/4CalculateFrame.JPG)
 
 5. ReportFrame
 
+![Report-Frame](https://github.com/Devler420/ACPCalculator/blob/main/5reportFrame.JPG)
+
 6. UserManagementFrame (Admin)
+
+![UserManagement-Frame](https://github.com/Devler420/ACPCalculator/blob/main/6UserFrame.JPG)
 
 **Simple GIF demonstrate the program.**
 
