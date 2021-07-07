@@ -44,6 +44,6 @@ Person D --->   Received back for 0%    / Additional payment for 25%.   / Pay to
 
 **Simple GIF demonstrate the program.**
 
-https://github.com/Devler420/ACPCalculator/blob/main/Animated%20GIF-downsized_large.gif
+![Demo GIF](https://github.com/Devler420/ACPCalculator/blob/main/Animated%20GIF-downsized_large.gif)
 
 Created by Devler420.
