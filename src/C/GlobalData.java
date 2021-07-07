@@ -1,7 +1,5 @@
 package C;
 
-import java.util.Date;
-
 public class GlobalData
 {
 	public static final String DATABASE_LOCATION = "acp-db.crpkyjnpfhba.ap-southeast-1.rds.amazonaws.com";

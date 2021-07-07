@@ -1,6 +1,5 @@
 package V;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -14,8 +13,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import java.awt.Font;
-import java.awt.TextField;
-
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
@@ -157,6 +154,7 @@ public class LoginFrame extends JFrame
 	{
 		if (UserManager.checkLogin(textField_username.getText(), new String (passwordField.getPassword())))
 		{
+			JOptionPane.showMessageDialog(LoginFrame.this, "Login Successful");
 			MainFrame f = new MainFrame();
 			f.setVisible(true);
 			
@@ -172,7 +170,7 @@ public class LoginFrame extends JFrame
 	{
 		if (UserManager.checkVersion(GlobalData.ProgramVersion))
 		{
-			
+//			JOptionPane.showMessageDialog(LoginFrame.this, "Welcome");
 		}
 		else
 		{
