@@ -6,7 +6,7 @@ Written by **Java** according to MVC and OOP methods.
 
 **What it does?**
 
-The program will calculate expenses according to each person's proportional consumption. Store datas in cloud Database (MySQL) provided by Amazon Relational Database Service (RDS)
+The program will calculate expenses according to each person's proportional consumption. Store datas in cloud Database (MySQL) provided by Amazon Relational Database Service (RDS) with Version control system.
 
 **Such as**
 
@@ -28,6 +28,22 @@ Person C --->   Received back for 0%    / Additional payment for 0%.
 
 Person D --->   Received back for 0%    / Additional payment for 25%.   / Pay to Person A
 
+**Sample pictures of GUI**
 
+1. LoginFrame
+
+2. MainFrame
+
+3. DatabaseResultFrame
+
+4. CalculatorFrame
+
+5. ReportFrame
+
+6. UserManagementFrame (Admin)
+
+**Simple GIF demonstrate the program.**
+
+https://github.com/Devler420/ACPCalculator/blob/main/Animated%20GIF-downsized_large.gif
 
 Created by Devler420.
