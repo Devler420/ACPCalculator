@@ -6,7 +6,7 @@ Written by **Java** according to MVC and OOP methods.
 
 **What it does?**
 
-The program will calculate expenses according to each person's proportional consumption. Store datas in cloud Database (MySQL) provided by Amazon Relational Database Service (RDS) with Version control system.
+The program will calculate expenses according to each person's proportional consumption. Store datas in cloud Database (**MySQL**) provided by **Amazon Relational Database Service** (RDS) with Version control system.
 
 **Such as**
 
