@@ -1,7 +1,7 @@
 # ACPCalculator
 
 This is a Calculator program for a specific purpose. It is created to use internally between associated person.
-
+Written by Java according to MVC and OOP methods.
 Anyway my opinion is it can be adapt to **multi-purpose use**.
 
 **What it does?**
