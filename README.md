@@ -6,7 +6,7 @@ Written by **Java** according to MVC and OOP methods.
 
 **What it does?**
 
-The program will calculate expenses according to each person's proportional consumption. Store datas in cloud Database (**MySQL**) provided by **Amazon Relational Database Service** (RDS) with Version control system.
+The program will calculate expenses according to each person's proportional consumption. Store datas in cloud Database **(MySQL)** provided by **Amazon Relational Database Service (RDS)** with standalone **Version Control System**.
 
 **Such as**
 
@@ -34,27 +34,27 @@ Person D --->   Received back for 0%    / Additional payment for 25%.   / Pay to
 
 **Sample pictures of GUI**
 
-1. **LoginFrame**
+**1. LoginFrame**
 
 ![Login-Frame](https://github.com/Devler420/ACPCalculator/blob/main/1LoginFrame.JPG)
 
-2. **MainFrame**
+**2. MainFrame**
 
 ![Main-Frame](https://github.com/Devler420/ACPCalculator/blob/main/2MainFrame.JPG)
 
-3. **DatabaseResultFrame**
+**3. DatabaseResultFrame**
 
 ![DatabaseResult-Frame](https://github.com/Devler420/ACPCalculator/blob/main/3MainResultFrame.JPG)
 
-4. **CalculatorFrame**
+**4. CalculatorFrame**
 
 ![Calculator-Frame](https://github.com/Devler420/ACPCalculator/blob/main/4CalculateFrame.JPG)
 
-5. **ReportFrame**
+**5. ReportFrame**
 
 ![Report-Frame](https://github.com/Devler420/ACPCalculator/blob/main/5reportFrame.JPG)
 
-6. **UserManagementFrame** (Admin)
+**6. UserManagementFrame (Admin)**
 
 ![UserManagement-Frame](https://github.com/Devler420/ACPCalculator/blob/main/6UserFrame.JPG)
 
