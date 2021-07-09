@@ -36,9 +36,13 @@ Person D --->   Received back for 0%    / Additional payment for 25%.   / Pay to
 
 **1. LoginFrame**
 
+Login frame where the program will also check for the latest version besides from user & password matching.
+
 ![Login-Frame](https://github.com/Devler420/ACPCalculator/blob/main/1LoginFrame.JPG)
 
 **2. MainFrame**
+
+Main frame which leads to all of the functions available.
 
 ![Main-Frame](https://github.com/Devler420/ACPCalculator/blob/main/2MainFrame.JPG)
 
