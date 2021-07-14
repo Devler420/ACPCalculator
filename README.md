@@ -4,7 +4,7 @@
 
 This is a Calculator program for a specific purpose. It is created to use internally between associated person. Anyway my opinion is it could be adapt to **multi-purpose use**.
 
-Written by **Java**.
+Written in **Java**.
 
 **What it does?**
 
