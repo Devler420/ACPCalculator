@@ -1,14 +1,22 @@
 # ACPCalculator
 
+(ACP = A Calculator Program)
+
 This is a Calculator program for a specific purpose. It is created to use internally between associated person. Anyway my opinion is it could be adapt to **multi-purpose use**.
 
-Written by **Java** according to MVC and OOP methods.
+Written by **Java**.
 
 **What it does?**
 
-The program will calculate expenses according to each person's proportional consumption. Store datas in cloud Database **(MySQL)** provided by **Amazon Relational Database Service (RDS)** with standalone **Version Control System**.
+Basically, the program is capable of calculating expenses for each person participating in an event. Such as there are 4 people going camping, picknick.
+Everyone bought their own foods, drinks. Maybe someone paid the car rental or someone paid for the hotel or camping ground, a tent. So each of them have their own expenses and at the end of the event they are going to have to calculate how much money they have to
+pay someone or receive back from someone. That's where the program came to be helpful.
 
-**Such as**
+So it's very simple. This is for the case that you split the bill "EQUALLY". All you have to do is enter the name of the product (you have bought), the price, and name of person who bought it.
+Then the program will automatically calculate the rest. The results are such as Person A pays 50 baht to Person B, Person C receives back 100 baht from Person A.
+And the results are also stored in a cloud database so you can track your expenses history.
+
+**Example of results**
 
 Person A --->   Advanced paid for 75%   / Consumed 25%.
 
