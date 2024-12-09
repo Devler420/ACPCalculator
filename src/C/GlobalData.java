@@ -4,10 +4,10 @@ import java.util.Date;
 
 public class GlobalData
 {
-	public static final String DATABASE_LOCATION = "acp-db.crpkyjnpfhba.ap-southeast-1.rds.amazonaws.com";
-	public static final String DATABASE_PORT = "3306";
-	public static final String DATABASE_USERNAME = "devler420";
-	public static final String DATABASE_PASSWORD = "Bookboom";
+	public static final String DATABASE_LOCATION = "";
+	public static final String DATABASE_PORT = "";
+	public static final String DATABASE_USERNAME = "";
+	public static final String DATABASE_PASSWORD = "";
 	public static final String DATABASE_DATABASE_NAME = "ACPDatabase";
 	
 	//Change this when there are new updates
